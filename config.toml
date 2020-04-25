@@ -1,0 +1,4 @@
+baseURL = "https://cheshire.io/"
+languageCode = "en-us"
+title = "Cheshire"
+theme = "ink"
