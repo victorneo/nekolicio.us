@@ -2,3 +2,40 @@ baseURL = "https://cheshire.io/"
 languageCode = "en-us"
 title = "Cheshire"
 theme = "ink"
+
+summaryLength = 4
+
+[params]
+	subtitle = "Blog"
+
+	# Content types to disable Disqus on.
+	disableDisqusTypes = ["page"]
+	featherIconsCDN = true
+	mode = "auto"
+
+
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "All posts"
+url = "/posts"
+weight = 2
+
+[[menu.main]]
+name = "About"
+url = "/about"
+weight = 3
+
+
+[[params.social]]
+name = "Twitter"
+icon = "twitter"
+url = "https://twitter.com/victorneo"
+
+[[params.social]]
+name = "RSS"
+icon = "rss"
+url = "/index.xml"
