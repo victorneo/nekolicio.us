@@ -24,7 +24,7 @@
 								</h4>
 								<span class="description">
                   {{ if isset .Params "tweet" }}
-                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/victorneo/status/{{ .Params.tweet }}">April 5, 2020</a></blockquote>
+                  <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/victorneo/status/{{ .Params.tweet }}">{{ .Title }}</a></blockquote>
 									{{ else if isset .Params "description" }}
 										{{ .Description }}
 									{{ else if gt (len .RawContent) 120 }}
