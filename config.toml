@@ -12,7 +12,13 @@ summaryLength = 4
 	disableDisqusTypes = ["page"]
 	featherIconsCDN = true
 	mode = "auto"
+	customCSS = "css/custom.css"
+	customDarkCSS = "css/custom-dark.css"  # Custom styles applied to dark mode css.
 
+[markup]
+  defaultMarkdownHandler = "blackFriday"
+  [markup.blackFriday]
+    hrefTargetBlank = true
 
 [[menu.main]]
 name = "Home"
