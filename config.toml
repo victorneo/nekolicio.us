@@ -8,7 +8,7 @@ summaryLength = 4
 [params]
 	subtitle = "Victor's Writings"
 
-        avatar = "images/profile.jpg"
+        avatar = "/images/profile.jpg"
 
 	# Content types to disable Disqus on.
 	disableDisqusTypes = ["page"]
