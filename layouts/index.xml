@@ -42,7 +42,7 @@
         {{ if isset .Params "tweet" }}
               <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/victorneo/status/{{ .Params.tweet }}">Tweeted: {{ .Title }}</a></p></blockquote>
         {{ else }}
-                {{ .Summary | html }}
+                {{- .Content | html -}}
         {{ end }}
       </description>
     </item>
