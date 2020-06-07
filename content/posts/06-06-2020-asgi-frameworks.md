@@ -7,7 +7,7 @@ description: "Time for ASGI Web Frameworks for Python"
 
 ## ASGI, WSGI, and Python
 
-Most popular Python web frameworks, such as Django and Flask, works wth WSGI
+Most popular Python web frameworks, such as Django and Flask, works with WSGI
 (Web Server Gateway Interface) under the hood, which has been around since
 [PEP 333][1] in 2003, and its update [PEP 3333][2] in 2010.
 
@@ -19,7 +19,7 @@ Interface).
 
 Major web frameworks are currently working to go async, including [Django][4],
 which is a major effort itself given the size of the framework. [Flask][5],
-which uses [Werkzeug][6] interally, does not have ASGI support yet.
+which uses [Werkzeug][6] internally, does not have ASGI support yet.
 
 If you are building a new Python-based web project today, the new of ASGI web
 frameworks should be on your list for consideration; they "generally" perform
@@ -34,7 +34,7 @@ much better than their WSGI-only counterparts_</center>
 ## Try an ASGI-Supported Web Framework Today
 
 **If you are looking for a Django-like experience** for a full web framework,
-[FastAPI][9] would offer the closest experience. There's full support for
+[FastAPI][9] would offer the closest experience. There is full support for
 [Pydantic][10], which makes the experience more pure Python than to learn a new
 framework-specific API.
 
@@ -75,7 +75,7 @@ point for your own frameworks.
 <center>_[Starlette, an ASGI Framework / Toolkit][14]_</center>
 
 
-If you try any of the frameworks above, I wil be happy to hear more about your
+If you try any of the frameworks above, I will be happy to hear more about your
 explorations with them on [Twitter][17].
 
 
