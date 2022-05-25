@@ -1,8 +1,8 @@
-baseURL = "https://cheshire.io/"
+baseURL = "https://nekolicio.us/"
 languageCode = "en-us"
-title = "Cheshire"
+title = "nekolicio.us"
 theme = "ink"
-copyright = "© 2020 Victor Neo. Licensed under CC BY-NC International License."
+copyright = "© 2022 Victor Neo. Licensed under CC BY-NC International License."
 summaryLength = 4
 
 [params]
