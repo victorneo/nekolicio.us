@@ -6,9 +6,12 @@ type: "page"
 Hello. I am Victor, and I am based in sunny
 [Singapore](https://goo.gl/maps/1dW9WEpN43n7wRQi9).
 
-I head up the Engineering team at [Carousell](https://careers.carousell.com),
-and spend a bit of my time reading through studies and books on management, and
-primarily use this blog to share my thoughts on them.
+I currently work at ALPHA Camp as a Student Success Director, focused on the
+flagship Full-Stack web development course, and developing new courses aimed at
+developers.
+
+Previously, I was Employee #1 at Carousell, and took on multiple Engineering
+Leadership roles as the Engineering team grew from 5 to over 100 engineers.
 
 If you are looking for book recommendations on Management or Engineering
 Management, you can check out my [GoodReads list](https://www.goodreads.com/review/list/23479859-victor-neo?shelf=management&sort=rating)
