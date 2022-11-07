@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nekolicio.us</title>
+    <link>https://nekolicio.us/</link>
+    <description>Recent content on nekolicio.us</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2022 Victor Neo. Licensed under CC BY-NC International License.</copyright>
+    <lastBuildDate>Sun, 07 Jun 2020 01:01:00 +0800</lastBuildDate>
+    
+	<atom:link href="https://nekolicio.us/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ASGI Frameworks for Python Are Here</title>
+      <link>
+              
+                      https://nekolicio.us/posts/06-06-2020-asgi-frameworks/
+              
+      </link>
+      <pubDate>Sun, 07 Jun 2020 01:01:00 +0800</pubDate>
+      
+      <guid>https://nekolicio.us/posts/06-06-2020-asgi-frameworks/</guid>
+      <description>
+        &lt;h2 id=&#34;asgi-wsgi-and-python&#34;&gt;ASGI, WSGI, and Python&lt;/h2&gt;
+&lt;p&gt;Most popular Python web frameworks, such as Django and Flask, works with WSGI
+(Web Server Gateway Interface) under the hood, which has been around since
+&lt;a href=&#34;https://www.python.org/dev/peps/pep-0333/&#34;&gt;PEP 333&lt;/a&gt; in 2003, and its update &lt;a href=&#34;https://www.python.org/dev/peps/pep-3333/&#34;&gt;PEP 3333&lt;/a&gt; in 2010.&lt;/p&gt;
+&lt;p&gt;With the introduction of asyncio in Python 3 and &lt;code&gt;await&lt;/code&gt; syntax in Python 3.5,
+the Python community finally has an easy way to do asynchronous programming. It
+was only a matter of time before steam would pick up for asynchronous support
+for web frameworks in the form of &lt;a href=&#34;https://asgi.readthedocs.io/en/latest/specs/main.html&#34;&gt;ASGI&lt;/a&gt; (Asynchronous Server Gateway
+Interface).&lt;/p&gt;
+&lt;p&gt;Major web frameworks are currently working to go async, including &lt;a href=&#34;https://docs.djangoproject.com/en/dev/releases/3.1/&#34;&gt;Django&lt;/a&gt;,
+which is a major effort itself given the size of the framework. &lt;a href=&#34;https://flask.palletsprojects.com/en/1.1.x/&#34;&gt;Flask&lt;/a&gt;,
+which uses &lt;a href=&#34;https://github.com/pallets/werkzeug/issues/1322#issuecomment-601062396&#34;&gt;Werkzeug&lt;/a&gt; internally, does not have ASGI support yet.&lt;/p&gt;
+&lt;p&gt;If you are building a new Python-based web project today, the new of ASGI web
+frameworks should be on your list for consideration; they &amp;ldquo;generally&amp;rdquo; perform
+faster than their WSGI-only counterparts for the same workload, and while
+&lt;a href=&#34;https://www.techempower.com/benchmarks/#section=data-r19&amp;amp;hw=cl&amp;amp;test=composite&amp;amp;l=zijzen-1r&#34;&gt;benchmarks&lt;/a&gt; are helpful, it is still best to benchmark it against your own
+use cases.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://nekolicio.us/images/asgi/benchmarks.png&#34; alt=&#34;TechEmpower Benchmarks Round 19&#34;&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;h2 id=&#34;try-an-asgi-supported-web-framework-today&#34;&gt;Try an ASGI-Supported Web Framework Today&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;If you are looking for a Django-like experience&lt;/strong&gt; for a full web framework,
+&lt;a href=&#34;https://fastapi.tiangolo.com/&#34;&gt;FastAPI&lt;/a&gt; would offer the closest experience. There is full support for
+&lt;a href=&#34;https://fastapi.tiangolo.com/features/#just-modern-python&#34;&gt;Pydantic&lt;/a&gt;, which makes the experience more pure Python than to learn a new
+framework-specific API.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://nekolicio.us/images/asgi/fastapi.png&#34; alt=&#34;FastAPI Logo&#34;&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;strong&gt;If you are looking for a Flask-like experience&lt;/strong&gt; for a micro-web framework,
+you will be spoiled for options.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://pgjones.gitlab.io/quart/index.html&#34;&gt;Quart&lt;/a&gt; offers full-API compatibility with Flask, and should be the
+first place where you start&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://vibora.io/&#34;&gt;Vibora&lt;/a&gt; has an API inspired by Flask with an obsession for speed&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://sanic.readthedocs.io/en/latest/&#34;&gt;Sanic&lt;/a&gt; is also inspired by Flask but has different design decisions from
+Vibora&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;from quart import Quart
+
+app = Quart(__name__)
+
+@app.route(&amp;#39;/&amp;#39;)
+async def hello():
+    return &amp;#39;hello&amp;#39;
+
+app.run()
+&lt;/code&gt;&lt;/pre&gt;&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;strong&gt;If you are looking for an ASGI framework/toolkit&lt;/strong&gt;, &lt;a href=&#34;https://www.starlette.io/&#34;&gt;Starlette&lt;/a&gt; will be the
+one to go for. It is lower level than the ones listed above as it is ultimately
+a toolkit, but you might find it useful for developing your own frameworks.
+&lt;a href=&#34;https://github.com/victorneo/starlette-starter&#34;&gt;Starlette-Starter&lt;/a&gt; is a boilerplate that I have built for my own API
+projects, which might be helpful for you if you are looking for a starting
+point for your own frameworks.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://nekolicio.us/images/asgi/starlette.png&#34; alt=&#34;Starlette Logo&#34;&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;If you try any of the frameworks above, I will be happy to hear more about your
+explorations with them on &lt;a href=&#34;https://twitter.com/victorneo&#34;&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>ActivityPub: Part 1</title>
+      <link>
+              
+                      https://nekolicio.us/posts/10-05-2020-actpub-part-1/
+              
+      </link>
+      <pubDate>Sun, 10 May 2020 01:01:00 +0800</pubDate>
+      
+      <guid>https://nekolicio.us/posts/10-05-2020-actpub-part-1/</guid>
+      <description>
+        &lt;h2 id=&#34;lets-federate-on-activitypub&#34;&gt;Let&amp;rsquo;s Federate on ActivityPub&lt;/h2&gt;
+&lt;p&gt;ActivityPub is a &lt;a href=&#34;https://www.w3.org/TR/activitypub/&#34;&gt;protocol for decentralized social networks&lt;/a&gt; to that allows
+federation - imagine servers running their own instances of &amp;ldquo;Twitter&amp;rdquo; that can
+speak with each other, across domains.&lt;/p&gt;
+&lt;p&gt;The screenshot below shows a toots and its replies on &lt;a href=&#34;https://joinmastodon.org/&#34;&gt;Mastodon&lt;/a&gt;, a
+Twitter-like social network that supports ActivityPub with users across
+different servers:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://nekolicio.us/images/actpub/toot-example.png&#34; alt=&#34;Toot from Mastodon&#34;&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;Supporting users across federated platforms introduces some interesting
+problems: posting updates, following / unfollowing users.&lt;/p&gt;
+&lt;p&gt;In this series of blog posts, I will be documenting my journey in building a
+simple server that federates with ActivityPub servers. It will be a fun journey
+to figure out how other implementations work and learn about the fun / pain
+when operating a federated application.&lt;/p&gt;
+&lt;p&gt;If you are interested in learning more, it might be easier (and faster) to
+check out existing implementations (next section) or check out
+&lt;a href=&#34;https://activitypub.rocks/&#34;&gt;activitypub.rocks&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;existing-implementations&#34;&gt;Existing Implementations&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://fediverse.party/&#34;&gt;Fediverse.party&lt;/a&gt; documents a list of decentralized social platforms, some
+of which are not ActivityPub compatible (eg. the once wildly popular
+&lt;a href=&#34;https://diasporafoundation.org/&#34;&gt;Disapora&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;The most popular ActivityPub federated network would be &lt;a href=&#34;https://joinmastodon.org/&#34;&gt;Mastodon&lt;/a&gt;, which
+became popular when ActivityPub received the W3C Recommendation status. You
+will have to choose which instances of Mastodon to join though. I am
+&lt;a href=&#34;https://mastodon.social/@victorneo&#34;&gt;@victorneo@mastodon.social&lt;/a&gt; if you want to follow me - my toots are
+automatically posted to my Twitter as well.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://nekolicio.us/images/actpub/mastodon-instances.png&#34; alt=&#34;Toot from Mastodon&#34;&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;Some others include &lt;a href=&#34;https://pleroma.social/&#34;&gt;Pleroma&lt;/a&gt;, &lt;a href=&#34;https://write.as/&#34;&gt;write.as&lt;/a&gt;, and &lt;a href=&#34;https://join.misskey.page/en/&#34;&gt;MissKey&lt;/a&gt; which is very
+popular with Japanese users.&lt;/p&gt;
+&lt;h2 id=&#34;implementation&#34;&gt;Implementation&lt;/h2&gt;
+&lt;p&gt;The &lt;a href=&#34;https://socialhub.activitypub.rocks/t/guide-for-new-activitypub-implementers/479&#34;&gt;Guide for new ActivityPub implementators&lt;/a&gt; is the best place to start
+right and what I will follow, and where you should start if you are ever
+implementing your own. &lt;a href=&#34;https://flak.tedunangst.com/post/ActivityPub-as-it-has-been-understood&#34;&gt;ActivityPub as it has been understood&lt;/a&gt; is another
+good reference with some good references.&lt;/p&gt;
+&lt;p&gt;Unfortunately, the official test suite has been &lt;a href=&#34;https://socialhub.activitypub.rocks/t/the-activitypub-test-suite/290&#34;&gt;down for a while&lt;/a&gt; and will
+continue to be for a while, but fortunately a &lt;a href=&#34;https://socialhub.activitypub.rocks/t/introducing-fedidb-devtools-for-activitypub/660&#34;&gt;new one is in the works&lt;/a&gt;.
+For testing purposes at the moment, we will attempt to federate with Mastodon
+and its ActivityPub implementation.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://nekolicio.us/images/actpub/testsuite-status.png&#34; alt=&#34;Testsuite&#34;&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;You can follow my progress on this repository: &lt;a href=&#34;https://github.com/Soda-Hub/soda&#34;&gt;soda-hub/Soda&lt;/a&gt;. There&amp;rsquo;s currently
+only one or two working API endpoints for testing out how Following APIs work.&lt;/p&gt;
+&lt;p&gt;For the Python folks reading this, I am using &lt;a href=&#34;https://www.starlette.io/&#34;&gt;Starlette&lt;/a&gt; to build the
+application to also take this chance to play with a ASGI framework using
+asyncio on Python 3. It&amp;rsquo;s been refreshing so far to be able to use asyncio
+with a Flask-inspired API for building web applications, and with the nice
+&lt;a href=&#34;https://www.techempower.com/benchmarks/#section=data-r17&amp;amp;hw=ph&amp;amp;test=fortune&amp;amp;l=zijzen-1&#34;&gt;performance benefits&lt;/a&gt; that comes with it.&lt;/p&gt;
+&lt;h2 id=&#34;lets-begin-lets-follow-someone&#34;&gt;Let&amp;rsquo;s Begin: Let&amp;rsquo;s Follow Someone&lt;/h2&gt;
+&lt;p&gt;The &lt;a href=&#34;https://activitypub.rocks/&#34;&gt;official website&lt;/a&gt; has a reference image for a really high-level
+overview of how Federation works for ActivityPub:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://nekolicio.us/images/actpub/actpub-overview.png&#34; alt=&#34;ActivityPub Overview&#34;&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;Most interactions between servers that Federate would be over the &lt;code&gt;/inbox&lt;/code&gt;
+endpoint - except for the initial user discovery. Here is a quick sequence of
+interactions when I search for a user on a remote server to follow on Mastodon:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Server A sends a &lt;a href=&#34;https://docs.joinmastodon.org/spec/webfinger/&#34;&gt;webfinger&lt;/a&gt; request to the remote server (Server B) to
+identify the user&lt;/li&gt;
+&lt;li&gt;Server B replies with the user&amp;rsquo;s information&lt;/li&gt;
+&lt;li&gt;Server A shows the user&amp;rsquo;s information, and thumbnail&lt;/li&gt;
+&lt;li&gt;Server A sends a follow request to Server B when a user clicks Follow to the
+user&amp;rsquo;s &lt;code&gt;/inbox&lt;/code&gt; address&lt;/li&gt;
+&lt;li&gt;Server B replies with an Follow object to indicate that following is approved&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img src=&#34;https://nekolicio.us/images/actpub/mastodon-search.png&#34; alt=&#34;Mastodon User Search&#34;&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;In terms of HTTP endpoints involved in the same flow:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Server A: &lt;code&gt;HTTP GET https://serverb.com/.well-known/webfinger?resource=acct:username@serverb.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Server A: &lt;code&gt;HTTP GET https://serverb.com/(some url)/username&lt;/code&gt; with the header &lt;code&gt;Accept: application/activity+json&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Server B replies with the user&amp;rsquo;s information&lt;/li&gt;
+&lt;li&gt;Server A shows the user&amp;rsquo;s information, and thumbnail&lt;/li&gt;
+&lt;li&gt;Server A sends a follow request to Server B: &lt;code&gt;HTTP POST https://serverb.com/(some url)/username/inbox&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The webfinger request returns the following response from Mastodon when I query
+for my own account:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
+  &amp;#34;subject&amp;#34;:&amp;#34;acct:victorneo@mastodon.social&amp;#34;,
+  &amp;#34;aliases&amp;#34;:[
+    &amp;#34;https://mastodon.social/@victorneo&amp;#34;,
+    &amp;#34;https://mastodon.social/users/victorneo&amp;#34;
+  ],
+  &amp;#34;links&amp;#34;:[
+    {
+      &amp;#34;rel&amp;#34;:&amp;#34;http://webfinger.net/rel/profile-page&amp;#34;,
+      &amp;#34;type&amp;#34;:&amp;#34;text/html&amp;#34;,
+      &amp;#34;href&amp;#34;:&amp;#34;https://mastodon.social/@victorneo&amp;#34;
+    },
+    {
+      &amp;#34;rel&amp;#34;:&amp;#34;self&amp;#34;,
+      &amp;#34;type&amp;#34;:&amp;#34;application/activity+json&amp;#34;,
+      &amp;#34;href&amp;#34;:&amp;#34;https://mastodon.social/users/victorneo&amp;#34;
+    },
+    {
+      &amp;#34;rel&amp;#34;:&amp;#34;http://ostatus.org/schema/1.0/subscribe&amp;#34;,
+      &amp;#34;template&amp;#34;:&amp;#34;https://mastodon.social/authorize_interaction?uri={uri}&amp;#34;
+    }
+  ]
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After getting this response, any server would know that they can access my
+profile information by looking for the link that points to &lt;code&gt;self&lt;/code&gt; and
+of the &lt;code&gt;application/activity+json&lt;/code&gt; type.&lt;/p&gt;
+&lt;p&gt;Querying the endpoint (with HTTP header &lt;code&gt;Accept: application/activity+json&lt;/code&gt;),
+you will get the following response:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{  &amp;#34;@context&amp;#34;:[&amp;#34;https://www.w3.org/ns/activitystreams&amp;#34;, ,,,],
+  &amp;#34;id&amp;#34;:&amp;#34;https://mastodon.social/users/victorneo&amp;#34;,
+  &amp;#34;type&amp;#34;:&amp;#34;Person&amp;#34;,
+  &amp;#34;following&amp;#34;:&amp;#34;https://mastodon.social/users/victorneo/following&amp;#34;,
+  &amp;#34;followers&amp;#34;:&amp;#34;https://mastodon.social/users/victorneo/followers&amp;#34;,
+  &amp;#34;inbox&amp;#34;:&amp;#34;https://mastodon.social/users/victorneo/inbox&amp;#34;,
+  &amp;#34;outbox&amp;#34;:&amp;#34;https://mastodon.social/users/victorneo/outbox&amp;#34;,
+  &amp;#34;featured&amp;#34;:&amp;#34;https://mastodon.social/users/victorneo/collections/featured&amp;#34;,
+  &amp;#34;preferredUsername&amp;#34;:&amp;#34;victorneo&amp;#34;,
+  &amp;#34;name&amp;#34;:&amp;#34;Victor Neo&amp;#34;,
+  &amp;#34;summary&amp;#34;:&amp;#34;\u003cp\u003eEngineering at Carousell. Passionate about the Open 🕸️.\u003c/p\u003e&amp;#34;,
+  &amp;#34;url&amp;#34;:&amp;#34;https://mastodon.social/@victorneo&amp;#34;,
+  &amp;#34;manuallyApprovesFollowers&amp;#34;:false,
+  &amp;#34;discoverable&amp;#34;:true,
+  &amp;#34;publicKey&amp;#34;:{
+    &amp;#34;id&amp;#34;:&amp;#34;https://mastodon.social/users/victorneo#main-key&amp;#34;,
+    &amp;#34;owner&amp;#34;:&amp;#34;https://mastodon.social/users/victorneo&amp;#34;,
+    &amp;#34;publicKeyPem&amp;#34;:&amp;#34;-----BEGIN PUBLIC KEY-----\...\n-----END PUBLIC KEY-----\n&amp;#34;
+  },
+  &amp;#34;tag&amp;#34;:[],
+  &amp;#34;attachment&amp;#34;:[],
+  &amp;#34;endpoints&amp;#34;:{
+    &amp;#34;sharedInbox&amp;#34;:&amp;#34;https://mastodon.social/inbox&amp;#34;
+  },
+  &amp;#34;icon&amp;#34;:{
+    &amp;#34;type&amp;#34;:&amp;#34;Image&amp;#34;,
+    &amp;#34;mediaType&amp;#34;:&amp;#34;image/jpeg&amp;#34;,
+    &amp;#34;url&amp;#34;:&amp;#34;https://files.mastodon.social/accounts/avatars/000/077/572/original/a79a3b7bf7011af0.jpg&amp;#34;
+
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Parsing the response, another server can send a &lt;a href=&#34;https://flak.tedunangst.com/post/AP-networking&#34;&gt;Follow request&lt;/a&gt; to
+&lt;code&gt;https://mastodon.social/users/victorneo/inbox&lt;/code&gt; to be processed.&lt;/p&gt;
+&lt;h2 id=&#34;key-format&#34;&gt;Key Format&lt;/h2&gt;
+&lt;p&gt;There&amp;rsquo;s no &amp;ldquo;official&amp;rdquo; format when it comes down specifying the public key
+encoding format that should be used when generated (see &lt;a href=&#34;https://github.com/w3c/activitypub/issues/315&#34;&gt;this issue&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Mastodon&amp;rsquo;s &lt;a href=&#34;https://blog.joinmastodon.org/2018/06/how-to-implement-a-basic-activitypub-server/&#34;&gt;mini-tutorial&lt;/a&gt; on setting up a compatible ActivityPub
+implementation indicates that they use a 2048 bits key using OpenSSL in the
+terminal&amp;hellip; which I assume that they use a library internally for.&lt;/p&gt;
+&lt;p&gt;As I am using Python for building my app, I will be using
+&lt;a href=&#34;https://cryptography.io/en/latest/hazmat/primitives/asymmetric/rsa/&#34;&gt;pyca/cryptography&lt;/a&gt; to help me with key generation for my application. You
+can view the &lt;a href=&#34;https://github.com/Soda-Hub/soda/blob/master/models/crypto_utils.py#L22&#34;&gt;key generation code&lt;/a&gt; here, but definitely do not use it
+without reading the documentation on what it does as (i) I am not a security
+expert, and (ii) this is not production grade security configuration.&lt;/p&gt;
+&lt;h2 id=&#34;next-up&#34;&gt;Next Up&lt;/h2&gt;
+&lt;p&gt;In the next series, we will continue with the Follow interactions, and get a
+proper &lt;code&gt;/inbox&lt;/code&gt; endpoint up and going.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>WFH Tools and Tips</title>
+      <link>
+              
+                      https://nekolicio.us/posts/26-04-2020-wfh-tools/
+              
+      </link>
+      <pubDate>Sun, 26 Apr 2020 01:04:00 +0800</pubDate>
+      
+      <guid>https://nekolicio.us/posts/26-04-2020-wfh-tools/</guid>
+      <description>
+        &lt;p&gt;Most people working in the tech industry should be familiar with the concept of
+working from home, albeit periodically. It is a slightly different when it
+becomes a daily affair without an option for actual face-to-face time with your
+colleagues.&lt;/p&gt;
+&lt;p&gt;I suspect that most people will probably walk out of this experience
+reinforcing their beliefs that a 100% remote work environment is the &lt;em&gt;only&lt;/em&gt; way
+of life going forward for them, or hate remote work so much that they will
+never want to work in a 100% remote company.&lt;/p&gt;
+&lt;p&gt;Regardless of your current preference towards working from home, here are a
+couple of tools and tips I have collected over the past few weeks that would
+hopefully would make your lives easier.&lt;/p&gt;
+&lt;h2 id=&#34;video-calls&#34;&gt;Video Calls&lt;/h2&gt;
+&lt;h3 id=&#34;getting-zoom-features-on-hangouts&#34;&gt;Getting Zoom Features on Hangouts&lt;/h3&gt;
+&lt;p&gt;Video calls over Zoom / Hangouts / Meet will remain the only way for most
+people to stay connected during this period of time. If you are using Hangouts
+Meet like us at Carousell, there are a couple of browser extensions that you
+can use to recreate the Zoom experience for free.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://nekolicio.us/images/wfh-tips/google-grid.jpg&#34; alt=&#34;Hangouts Meet with Grid&#34;&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;The Grid View plugin for &lt;a href=&#34;https://chrome.google.com/webstore/detail/google-meet-grid-view/bjkegbgpfgpikgkfidhcihhiflbjgfic&#34;&gt;Chrome&lt;/a&gt; and &lt;a href=&#34;https://addons.mozilla.org/en-US/firefox/addon/google-meet-grid-view/&#34;&gt;Firefox&lt;/a&gt; is a great addition to
+help you recreate that grid experience from Zoom. If you want the ability to
+add live reactions and &amp;ldquo;hands-up&amp;rdquo; reactions, &lt;a href=&#34;https://chrome.google.com/webstore/detail/nod-reactions-for-google/oikgofeboedgfkaacpfepbfmgdalabej&#34;&gt;Nod for Hangouts Meet&lt;/a&gt; can
+help with that.&lt;/p&gt;
+&lt;p&gt;The bad news is that everyone needs to install these extensions to benefit from
+them. The good news, however, is that Hangouts Meet will be rolling out its own
+native Grid view in the coming weeks, so at least one of these extensions will
+not be necessary soon. Hopefully Google will continue to ship more new features
+during this period of time and finally catch up with Zoom.&lt;/p&gt;
+&lt;h3 id=&#34;audio-quality-and-noise-cancellation&#34;&gt;Audio Quality and Noise Cancellation&lt;/h3&gt;
+&lt;p&gt;Perhaps it&amp;rsquo;s due to the influx of online influencers using their &lt;a href=&#34;https://www.bluedesigns.com/products/yeti/&#34;&gt;Yeti&lt;/a&gt;
+microphones, but I find it difficult to believe that people will follow
+recommendations where they are told to buy expensive microphones to enhance
+their voice over video calls. The reality is that most of us will probably be
+working in environments that are not ideal for video calls at home, especially
+if you are staying with others or have kids running around.&lt;/p&gt;
+&lt;p&gt;A high end microphone won&amp;rsquo;t work if you are stressed out by noises around the
+house. In fact, it might even pick up sounds that would normally not be caught
+by the earphones that come with your phone.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://nekolicio.us/images/wfh-tips/meetings-calendar.png&#34; alt=&#34;Calendar&#34;&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;I do about 3-6 hours worth of video calls everyday, and for all of them, I use
+a set of &lt;a href=&#34;https://www.mi.com/sg/headphones_basic2/&#34;&gt;cheap earphones&lt;/a&gt; that I bought from Xiaomi a couple years back and
+it works super well coupled with Krisp. And trust me - it&amp;rsquo;s much better for
+both the speaker and listeners if you use a earphone or wireless one compared
+to the built-in one in your laptop. Unless you are using the &lt;a href=&#34;https://www.theverge.com/2019/11/21/20974649/apple-macbook-pro-16-inch-laptop-review-keyboard-test-specs-price-features&#34;&gt;16&amp;quot; Macbook Pro&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://nekolicio.us/images/wfh-tips/krisp-tool.png&#34; alt=&#34;Krisp Screenshot&#34;&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;Fortunately, there is a salvation for us working in environments with random
+noises. &lt;a href=&#34;https://krisp.ai/&#34;&gt;Krisp&lt;/a&gt; is a software that you can install on your macOS, Windows,
+or iOS devices that will perform noise cancellation for you automatically,
+using AI models that they have built.&lt;/p&gt;
+&lt;p&gt;In Singapore, our Air Force frequently does air drills in the air which can
+create quite a bit of background noise. My best record so far has been going
+thru 3 different military aircrafts flying past my house in a single hour, and
+that made me scramble to mute my mic to avoid disrupting others.  Fortunately
+for me, Krisp can block all the loud noises from the plane so I don&amp;rsquo;t have to
+mute myself (in fact, I rarely mute myself unless I need to step away).&lt;/p&gt;
+&lt;h2 id=&#34;work-async-but-find-ways-to-connect&#34;&gt;Work Async, But Find Ways to Connect&lt;/h2&gt;
+&lt;h3 id=&#34;async-not-sync&#34;&gt;Async, not Sync&lt;/h3&gt;
+&lt;p&gt;If you and your team are not used to working remote, it can easily feel
+disconnected from them. I am not definitely &lt;strong&gt;not keen&lt;/strong&gt; on presence-based
+video tools such as &lt;a href=&#34;https://www.pukkateam.com&#34;&gt;PukkaTeam&lt;/a&gt; and &lt;a href=&#34;https://sneek.io/&#34;&gt;Sneek&lt;/a&gt;. (Huge) Privacy concerns
+aside, it creates an environment where managers can use to check if their
+team members are at work or not. It could work for well for team members
+without their managers though, if they wish to use it. Slack works well
+enough for us, and I rarely tag someone in my team&amp;rsquo;s channel.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://nekolicio.us/images/wfh-tips/doc-list.png&#34; alt=&#34;Document Writing&#34;&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;Remote has an excellent &lt;a href=&#34;https://blog.remote.com/why-you-should-be-doing-async-work/&#34;&gt;article on working asynchronously&lt;/a&gt; that you should
+take a look. Rather than get into video meetings about certain topics,
+well-crafted documents are preferred. It forces you to think through your ideas
+and concepts, and it allows your readers to go through the document and comment
+on their own time. After that, a meeting can be held to go through the document
+and follow-ups.&lt;/p&gt;
+&lt;h3 id=&#34;find-ways-to-connect&#34;&gt;Find Ways to Connect&lt;/h3&gt;
+&lt;p&gt;Team activities are the best way to stay connected. Some teams at Carousell
+have started sessions where they play games online, agendaless meetings where
+they chat about how life has been since they started working from home.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://nekolicio.us/images/wfh-tips/16-personalities.png&#34; alt=&#34;Some of the Personalities&#34;&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;My team will be doing our first team activity in one week later where we will
+reveal our &lt;a href=&#34;https://www.16personalities.com/&#34;&gt;16 personalities&lt;/a&gt; in a workshop facilitated by our amazing HR
+Business Partner. The intent of this session is actually less on our individual
+personalities (it&amp;rsquo;s still fun to know), but more about carving out time to talk
+about stuff that is not related to work.&lt;/p&gt;
+&lt;h2 id=&#34;wfh-at-your-schedule&#34;&gt;WFH At Your Schedule&lt;/h2&gt;
+&lt;h3 id=&#34;adjust-your-schedules&#34;&gt;Adjust Your Schedules&lt;/h3&gt;
+&lt;p&gt;Working from home during the COVID-19 period can be challenging if you need to
+take care of family members, especially those who need special care and
+attention.&lt;/p&gt;
+&lt;p&gt;If you need changes to your working hours to get by, be sure to speak with your
+team and manager and see what can be done. Our CTO took the lead by announcing
+that he will be working earlier hours in the day so that he can take care of
+his kids in the afternoon while his wife works.&lt;/p&gt;
+&lt;p&gt;I personally embrace this period of time by taking &lt;a href=&#34;https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6180010/&#34;&gt;power naps&lt;/a&gt; when I get
+15-20 minutes blocks of time, especially if it&amp;rsquo;s a particularly challenging day
+with lots of meetings. It&amp;rsquo;s definitely not something I get a chance to do in
+office, and I wake up feeling refreshed and ready for the next meeting.&lt;/p&gt;
+&lt;h3 id=&#34;stay-active&#34;&gt;Stay Active&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://nekolicio.us/images/wfh-tips/zwift-rides.png&#34; alt=&#34;Zwift Screenshot&#34;&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;To avoid sinking into the trap of working non-stop, I set up my bicycle and
+&lt;a href=&#34;https://www.bikeradar.com/reviews/training/indoor-trainers/resistance-trainer/wahoo-kickr-snap-review/&#34;&gt;indoor trainer&lt;/a&gt; to be literally right beside me so that I can hop on and
+ride anytime on &lt;a href=&#34;https://zwift.com&#34;&gt;Zwift&lt;/a&gt;. I bought the trainer more than a month ago when I
+saw the situation evolving, and it turns out to be the right choice as I no
+longer need to head out to cycle.&lt;/p&gt;
+&lt;p&gt;There are plenty of &lt;a href=&#34;https://www.google.com/search?client=firefox-b-d&amp;amp;q=youtube+hiit+workouts&#34;&gt;HIIT workouts on Youtube&lt;/a&gt; that you can do without any
+equipment. Do a couple of reps and you can go back to eating those chips and
+snacks you know you stocked up on.&lt;/p&gt;
+&lt;h2 id=&#34;other-notable-mentions&#34;&gt;Other Notable Mentions&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;I bought &lt;a href=&#34;https://magnet.crowdcafe.com/&#34;&gt;magnet&lt;/a&gt; in the past when it was on sale, but now that it no longer works on Catalina, I have switched to &lt;a href=&#34;https://rectangleapp.com/&#34;&gt;Rectangle&lt;/a&gt;, which is almost the same and open source!&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://notion.so&#34;&gt;Notion&lt;/a&gt; is my current GOTO tool for tracking TODOs and writing documents. Works better than other personal TODO tools in my opinion&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://pinafore.social/&#34;&gt;Pinafore&lt;/a&gt;, if you use Mastodon for tooting.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;thats-all-i-have-for-now&#34;&gt;That&amp;rsquo;s all I have for now&lt;/h2&gt;
+&lt;p&gt;I hope you found something helpful in this post. For me, the biggest lifesaver
+has been Krisp - and I only came across it in a &lt;a href=&#34;http://blog.ifost.org.au/2020/03/how-i-teach-classes-remotely.html&#34;&gt;blog post by a teacher&lt;/a&gt; on
+teaching remotely online.&lt;/p&gt;
+&lt;p&gt;If you have tips you wish to share with me, &lt;a href=&#34;https://twitter.com/victorneo&#34;&gt;let me know on Twitter&lt;/a&gt;!&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Welcome Back</title>
+      <link>
+              
+                      https://nekolicio.us/posts/25-04-2020-welcome-back/
+              
+      </link>
+      <pubDate>Sat, 25 Apr 2020 17:49:47 +0800</pubDate>
+      
+      <guid>https://nekolicio.us/posts/25-04-2020-welcome-back/</guid>
+      <description>
+        &lt;p&gt;More to come soon.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Tech 65 Talk</title>
+      <link>
+              
+                      https://twitter.com/victorneo/status/1246839963582263296
+              
+      </link>
+      <pubDate>Mon, 06 Apr 2020 17:49:47 +0800</pubDate>
+      
+      <guid>https://nekolicio.us/posts/06-04-2020-tech65-talks/</guid>
+      <description>
+        
+              <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/victorneo/status/1246839963582263296">Tweeted: Tech 65 Talk</a></p></blockquote>
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>
+              
+                      https://nekolicio.us/about/
+              
+      </link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://nekolicio.us/about/</guid>
+      <description>
+        &lt;p&gt;Hello. I am Victor, and I am based in sunny
+&lt;a href=&#34;https://goo.gl/maps/1dW9WEpN43n7wRQi9&#34;&gt;Singapore&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I currently work at ALPHA Camp as a Student Success Director, focused on the
+flagship Full-Stack web development course, and developing new courses aimed at
+developers.&lt;/p&gt;
+&lt;p&gt;Previously, I was Employee #1 at Carousell, and took on multiple Engineering
+Leadership roles as the Engineering team grew from 5 to over 100 engineers.&lt;/p&gt;
+&lt;p&gt;If you are looking for book recommendations on Management or Engineering
+Management, you can check out my &lt;a href=&#34;https://www.goodreads.com/review/list/23479859-victor-neo?shelf=management&amp;amp;sort=rating&#34;&gt;GoodReads list&lt;/a&gt;
+to see what are the top books that I have read and would highly recommend. 5
+stars are reserved for books that I highly recommend.&lt;/p&gt;
+&lt;p&gt;Mysteries and thrillers books are my favourite, so I do have a list to track
+those that I have read as well.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.goodreads.com/review/list/23479859-victor-neo?shelf=mysteries&#34;&gt;Mysteries /
+Thrillers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Favourite book so far: &lt;a href=&#34;https://www.goodreads.com/book/show/34945597-the-great-passage&#34;&gt;The Great Passage&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Questions or comments? You can reach out to me on
+&lt;a href=&#34;https://twitter.com/victorneo&#34;&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

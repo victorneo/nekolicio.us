@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>ActivityPub: Part 1 - nekolicio.us</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="webmention" href="https://webmention.io/nekolicio.us/webmention" />
+  <link rel="pingback" href="https://webmention.io/nekolicio.us/xmlrpc" />
+  <link rel="me" href="https://mastodon.social/@victorneo" /><meta itemprop="name" content="ActivityPub: Part 1">
+<meta itemprop="description" content="Federating with ActivityPub: Part 1"><meta itemprop="datePublished" content="2020-05-10T01:01:00+08:00" />
+<meta itemprop="dateModified" content="2020-05-10T01:01:00+08:00" />
+<meta itemprop="wordCount" content="866">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="ActivityPub: Part 1" />
+<meta property="og:description" content="Federating with ActivityPub: Part 1" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nekolicio.us/posts/10-05-2020-actpub-part-1/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-05-10T01:01:00+08:00" />
+<meta property="article:modified_time" content="2020-05-10T01:01:00+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ActivityPub: Part 1"/>
+<meta name="twitter:description" content="Federating with ActivityPub: Part 1"/>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="screen" href="https://nekolicio.us/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://nekolicio.us/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="https://nekolicio.us/css/custom.css" />
+	
+
+        <link id="dark-scheme" rel="stylesheet" type="text/css" href="https://nekolicio.us/css/dark.css" />
+                <link id="dark-scheme" rel="stylesheet" type="text/css" href="https://nekolicio.us/css/custom-dark.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+		<script src="https://nekolicio.us/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper">
+		<div class="header">
+	
+		<div class="avatar">
+			<a href="https://nekolicio.us/">
+				<img src="/images/profile.jpg" alt="nekolicio.us" />
+			</a>
+		</div>
+	
+	<h1 class="site-title"><a href="https://nekolicio.us/">nekolicio.us</a></h1>
+	<div class="site-description"><p>Victor&rsquo;s Writings</p><nav class="nav social">
+			<ul class="flat"><li><a href="https://twitter.com/victorneo" rel="me" title="Twitter"><i data-feather="twitter"></i></a></li><li><a href="https://github.com/victorneo" rel="me" title="Github"><i data-feather="github"></i></a></li><li><a href="/index.xml" rel="me" title="RSS"><i data-feather="rss"></i></a></li></ul>
+		</nav><span class="scheme-toggle"><a href="#" id="scheme-toggle"></a></div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">All Posts</a>
+			</li>
+			
+			<li>
+				<a href="/about">About</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post">
+			<div class="post-header">
+				
+					<div class="meta">
+						<div class="date">
+							<span class="day">10</span>
+							<span class="rest">May 2020</span>
+						</div>
+					</div>
+				
+				<div class="matter">
+					<h1 class="title">ActivityPub: Part 1</h1>
+				</div>
+			</div>
+					
+			<div class="markdown">
+				<h2 id="lets-federate-on-activitypub">Let&rsquo;s Federate on ActivityPub</h2>
+<p>ActivityPub is a <a href="https://www.w3.org/TR/activitypub/">protocol for decentralized social networks</a> to that allows
+federation - imagine servers running their own instances of &ldquo;Twitter&rdquo; that can
+speak with each other, across domains.</p>
+<p>The screenshot below shows a toots and its replies on <a href="https://joinmastodon.org/">Mastodon</a>, a
+Twitter-like social network that supports ActivityPub with users across
+different servers:</p>
+<p><img src="/images/actpub/toot-example.png" alt="Toot from Mastodon"></p>
+<!-- raw HTML omitted -->
+<p>Supporting users across federated platforms introduces some interesting
+problems: posting updates, following / unfollowing users.</p>
+<p>In this series of blog posts, I will be documenting my journey in building a
+simple server that federates with ActivityPub servers. It will be a fun journey
+to figure out how other implementations work and learn about the fun / pain
+when operating a federated application.</p>
+<p>If you are interested in learning more, it might be easier (and faster) to
+check out existing implementations (next section) or check out
+<a href="https://activitypub.rocks/">activitypub.rocks</a>.</p>
+<h2 id="existing-implementations">Existing Implementations</h2>
+<p><a href="https://fediverse.party/">Fediverse.party</a> documents a list of decentralized social platforms, some
+of which are not ActivityPub compatible (eg. the once wildly popular
+<a href="https://diasporafoundation.org/">Disapora</a>).</p>
+<p>The most popular ActivityPub federated network would be <a href="https://joinmastodon.org/">Mastodon</a>, which
+became popular when ActivityPub received the W3C Recommendation status. You
+will have to choose which instances of Mastodon to join though. I am
+<a href="https://mastodon.social/@victorneo">@victorneo@mastodon.social</a> if you want to follow me - my toots are
+automatically posted to my Twitter as well.</p>
+<p><img src="/images/actpub/mastodon-instances.png" alt="Toot from Mastodon"></p>
+<!-- raw HTML omitted -->
+<p>Some others include <a href="https://pleroma.social/">Pleroma</a>, <a href="https://write.as/">write.as</a>, and <a href="https://join.misskey.page/en/">MissKey</a> which is very
+popular with Japanese users.</p>
+<h2 id="implementation">Implementation</h2>
+<p>The <a href="https://socialhub.activitypub.rocks/t/guide-for-new-activitypub-implementers/479">Guide for new ActivityPub implementators</a> is the best place to start
+right and what I will follow, and where you should start if you are ever
+implementing your own. <a href="https://flak.tedunangst.com/post/ActivityPub-as-it-has-been-understood">ActivityPub as it has been understood</a> is another
+good reference with some good references.</p>
+<p>Unfortunately, the official test suite has been <a href="https://socialhub.activitypub.rocks/t/the-activitypub-test-suite/290">down for a while</a> and will
+continue to be for a while, but fortunately a <a href="https://socialhub.activitypub.rocks/t/introducing-fedidb-devtools-for-activitypub/660">new one is in the works</a>.
+For testing purposes at the moment, we will attempt to federate with Mastodon
+and its ActivityPub implementation.</p>
+<p><img src="/images/actpub/testsuite-status.png" alt="Testsuite"></p>
+<!-- raw HTML omitted -->
+<p>You can follow my progress on this repository: <a href="https://github.com/Soda-Hub/soda">soda-hub/Soda</a>. There&rsquo;s currently
+only one or two working API endpoints for testing out how Following APIs work.</p>
+<p>For the Python folks reading this, I am using <a href="https://www.starlette.io/">Starlette</a> to build the
+application to also take this chance to play with a ASGI framework using
+asyncio on Python 3. It&rsquo;s been refreshing so far to be able to use asyncio
+with a Flask-inspired API for building web applications, and with the nice
+<a href="https://www.techempower.com/benchmarks/#section=data-r17&amp;hw=ph&amp;test=fortune&amp;l=zijzen-1">performance benefits</a> that comes with it.</p>
+<h2 id="lets-begin-lets-follow-someone">Let&rsquo;s Begin: Let&rsquo;s Follow Someone</h2>
+<p>The <a href="https://activitypub.rocks/">official website</a> has a reference image for a really high-level
+overview of how Federation works for ActivityPub:</p>
+<p><img src="/images/actpub/actpub-overview.png" alt="ActivityPub Overview"></p>
+<!-- raw HTML omitted -->
+<p>Most interactions between servers that Federate would be over the <code>/inbox</code>
+endpoint - except for the initial user discovery. Here is a quick sequence of
+interactions when I search for a user on a remote server to follow on Mastodon:</p>
+<ol>
+<li>Server A sends a <a href="https://docs.joinmastodon.org/spec/webfinger/">webfinger</a> request to the remote server (Server B) to
+identify the user</li>
+<li>Server B replies with the user&rsquo;s information</li>
+<li>Server A shows the user&rsquo;s information, and thumbnail</li>
+<li>Server A sends a follow request to Server B when a user clicks Follow to the
+user&rsquo;s <code>/inbox</code> address</li>
+<li>Server B replies with an Follow object to indicate that following is approved</li>
+</ol>
+<p><img src="/images/actpub/mastodon-search.png" alt="Mastodon User Search"></p>
+<!-- raw HTML omitted -->
+<p>In terms of HTTP endpoints involved in the same flow:</p>
+<ol>
+<li>Server A: <code>HTTP GET https://serverb.com/.well-known/webfinger?resource=acct:username@serverb.com</code></li>
+<li>Server A: <code>HTTP GET https://serverb.com/(some url)/username</code> with the header <code>Accept: application/activity+json</code></li>
+<li>Server B replies with the user&rsquo;s information</li>
+<li>Server A shows the user&rsquo;s information, and thumbnail</li>
+<li>Server A sends a follow request to Server B: <code>HTTP POST https://serverb.com/(some url)/username/inbox</code></li>
+</ol>
+<p>The webfinger request returns the following response from Mastodon when I query
+for my own account:</p>
+<pre tabindex="0"><code>{
+  &#34;subject&#34;:&#34;acct:victorneo@mastodon.social&#34;,
+  &#34;aliases&#34;:[
+    &#34;https://mastodon.social/@victorneo&#34;,
+    &#34;https://mastodon.social/users/victorneo&#34;
+  ],
+  &#34;links&#34;:[
+    {
+      &#34;rel&#34;:&#34;http://webfinger.net/rel/profile-page&#34;,
+      &#34;type&#34;:&#34;text/html&#34;,
+      &#34;href&#34;:&#34;https://mastodon.social/@victorneo&#34;
+    },
+    {
+      &#34;rel&#34;:&#34;self&#34;,
+      &#34;type&#34;:&#34;application/activity+json&#34;,
+      &#34;href&#34;:&#34;https://mastodon.social/users/victorneo&#34;
+    },
+    {
+      &#34;rel&#34;:&#34;http://ostatus.org/schema/1.0/subscribe&#34;,
+      &#34;template&#34;:&#34;https://mastodon.social/authorize_interaction?uri={uri}&#34;
+    }
+  ]
+}
+</code></pre><p>After getting this response, any server would know that they can access my
+profile information by looking for the link that points to <code>self</code> and
+of the <code>application/activity+json</code> type.</p>
+<p>Querying the endpoint (with HTTP header <code>Accept: application/activity+json</code>),
+you will get the following response:</p>
+<pre tabindex="0"><code>{  &#34;@context&#34;:[&#34;https://www.w3.org/ns/activitystreams&#34;, ,,,],
+  &#34;id&#34;:&#34;https://mastodon.social/users/victorneo&#34;,
+  &#34;type&#34;:&#34;Person&#34;,
+  &#34;following&#34;:&#34;https://mastodon.social/users/victorneo/following&#34;,
+  &#34;followers&#34;:&#34;https://mastodon.social/users/victorneo/followers&#34;,
+  &#34;inbox&#34;:&#34;https://mastodon.social/users/victorneo/inbox&#34;,
+  &#34;outbox&#34;:&#34;https://mastodon.social/users/victorneo/outbox&#34;,
+  &#34;featured&#34;:&#34;https://mastodon.social/users/victorneo/collections/featured&#34;,
+  &#34;preferredUsername&#34;:&#34;victorneo&#34;,
+  &#34;name&#34;:&#34;Victor Neo&#34;,
+  &#34;summary&#34;:&#34;\u003cp\u003eEngineering at Carousell. Passionate about the Open 🕸️.\u003c/p\u003e&#34;,
+  &#34;url&#34;:&#34;https://mastodon.social/@victorneo&#34;,
+  &#34;manuallyApprovesFollowers&#34;:false,
+  &#34;discoverable&#34;:true,
+  &#34;publicKey&#34;:{
+    &#34;id&#34;:&#34;https://mastodon.social/users/victorneo#main-key&#34;,
+    &#34;owner&#34;:&#34;https://mastodon.social/users/victorneo&#34;,
+    &#34;publicKeyPem&#34;:&#34;-----BEGIN PUBLIC KEY-----\...\n-----END PUBLIC KEY-----\n&#34;
+  },
+  &#34;tag&#34;:[],
+  &#34;attachment&#34;:[],
+  &#34;endpoints&#34;:{
+    &#34;sharedInbox&#34;:&#34;https://mastodon.social/inbox&#34;
+  },
+  &#34;icon&#34;:{
+    &#34;type&#34;:&#34;Image&#34;,
+    &#34;mediaType&#34;:&#34;image/jpeg&#34;,
+    &#34;url&#34;:&#34;https://files.mastodon.social/accounts/avatars/000/077/572/original/a79a3b7bf7011af0.jpg&#34;
+
+  }
+}
+</code></pre><p>Parsing the response, another server can send a <a href="https://flak.tedunangst.com/post/AP-networking">Follow request</a> to
+<code>https://mastodon.social/users/victorneo/inbox</code> to be processed.</p>
+<h2 id="key-format">Key Format</h2>
+<p>There&rsquo;s no &ldquo;official&rdquo; format when it comes down specifying the public key
+encoding format that should be used when generated (see <a href="https://github.com/w3c/activitypub/issues/315">this issue</a>).</p>
+<p>Mastodon&rsquo;s <a href="https://blog.joinmastodon.org/2018/06/how-to-implement-a-basic-activitypub-server/">mini-tutorial</a> on setting up a compatible ActivityPub
+implementation indicates that they use a 2048 bits key using OpenSSL in the
+terminal&hellip; which I assume that they use a library internally for.</p>
+<p>As I am using Python for building my app, I will be using
+<a href="https://cryptography.io/en/latest/hazmat/primitives/asymmetric/rsa/">pyca/cryptography</a> to help me with key generation for my application. You
+can view the <a href="https://github.com/Soda-Hub/soda/blob/master/models/crypto_utils.py#L22">key generation code</a> here, but definitely do not use it
+without reading the documentation on what it does as (i) I am not a security
+expert, and (ii) this is not production grade security configuration.</p>
+<h2 id="next-up">Next Up</h2>
+<p>In the next series, we will continue with the Follow interactions, and get a
+proper <code>/inbox</code> endpoint up and going.</p>
+
+			</div>
+
+			<div class="tags">
+				
+					
+				
+			</div></div>
+	</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div>2022  © 2022 Victor Neo. Licensed under CC BY-NC International License. |  <a href="https://github.com/knadh/hugo-ink">Ink</a> theme on <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+<script>feather.replace()</script>
+</body>
+</html>

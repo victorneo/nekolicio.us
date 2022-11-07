@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on nekolicio.us</title>
+    <link>https://nekolicio.us/tags/</link>
+    <description>Recent content in Tags on nekolicio.us</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2022 Victor Neo. Licensed under CC BY-NC International License.</copyright><atom:link href="https://nekolicio.us/tags/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

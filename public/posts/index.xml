@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on nekolicio.us</title>
+    <link>https://nekolicio.us/posts/</link>
+    <description>Recent content in Posts on nekolicio.us</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© 2022 Victor Neo. Licensed under CC BY-NC International License.</copyright>
+    <lastBuildDate>Sun, 07 Jun 2020 01:01:00 +0800</lastBuildDate><atom:link href="https://nekolicio.us/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ASGI Frameworks for Python Are Here</title>
+      <link>https://nekolicio.us/posts/06-06-2020-asgi-frameworks/</link>
+      <pubDate>Sun, 07 Jun 2020 01:01:00 +0800</pubDate>
+      
+      <guid>https://nekolicio.us/posts/06-06-2020-asgi-frameworks/</guid>
+      <description>ASGI, WSGI, and Python Most popular Python web frameworks, such as Django and Flask, works with WSGI (Web Server Gateway Interface) under the hood, which has been around since PEP 333 in 2003, and its update PEP 3333 in 2010.</description>
+    </item>
+    
+    <item>
+      <title>ActivityPub: Part 1</title>
+      <link>https://nekolicio.us/posts/10-05-2020-actpub-part-1/</link>
+      <pubDate>Sun, 10 May 2020 01:01:00 +0800</pubDate>
+      
+      <guid>https://nekolicio.us/posts/10-05-2020-actpub-part-1/</guid>
+      <description>Let&amp;rsquo;s Federate on ActivityPub ActivityPub is a protocol for decentralized social networks to that allows federation - imagine servers running their own instances of &amp;ldquo;Twitter&amp;rdquo; that can speak with each other, across domains.</description>
+    </item>
+    
+    <item>
+      <title>WFH Tools and Tips</title>
+      <link>https://nekolicio.us/posts/26-04-2020-wfh-tools/</link>
+      <pubDate>Sun, 26 Apr 2020 01:04:00 +0800</pubDate>
+      
+      <guid>https://nekolicio.us/posts/26-04-2020-wfh-tools/</guid>
+      <description>Most people working in the tech industry should be familiar with the concept of working from home, albeit periodically.</description>
+    </item>
+    
+    <item>
+      <title>Welcome Back</title>
+      <link>https://nekolicio.us/posts/25-04-2020-welcome-back/</link>
+      <pubDate>Sat, 25 Apr 2020 17:49:47 +0800</pubDate>
+      
+      <guid>https://nekolicio.us/posts/25-04-2020-welcome-back/</guid>
+      <description>More to come soon.</description>
+    </item>
+    
+    <item>
+      <title>Tech 65 Talk</title>
+      <link>https://nekolicio.us/posts/06-04-2020-tech65-talks/</link>
+      <pubDate>Mon, 06 Apr 2020 17:49:47 +0800</pubDate>
+      
+      <guid>https://nekolicio.us/posts/06-04-2020-tech65-talks/</guid>
+      <description>(Is that a ME from 5 years ago?</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>ASGI Frameworks for Python Are Here - nekolicio.us</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="webmention" href="https://webmention.io/nekolicio.us/webmention" />
+  <link rel="pingback" href="https://webmention.io/nekolicio.us/xmlrpc" />
+  <link rel="me" href="https://mastodon.social/@victorneo" /><meta itemprop="name" content="ASGI Frameworks for Python Are Here">
+<meta itemprop="description" content="Time for ASGI Web Frameworks for Python"><meta itemprop="datePublished" content="2020-06-07T01:01:00+08:00" />
+<meta itemprop="dateModified" content="2020-06-07T01:01:00+08:00" />
+<meta itemprop="wordCount" content="391">
+<meta itemprop="keywords" content="" /><meta property="og:title" content="ASGI Frameworks for Python Are Here" />
+<meta property="og:description" content="Time for ASGI Web Frameworks for Python" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nekolicio.us/posts/06-06-2020-asgi-frameworks/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-06-07T01:01:00+08:00" />
+<meta property="article:modified_time" content="2020-06-07T01:01:00+08:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ASGI Frameworks for Python Are Here"/>
+<meta name="twitter:description" content="Time for ASGI Web Frameworks for Python"/>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="screen" href="https://nekolicio.us/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://nekolicio.us/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="https://nekolicio.us/css/custom.css" />
+	
+
+        <link id="dark-scheme" rel="stylesheet" type="text/css" href="https://nekolicio.us/css/dark.css" />
+                <link id="dark-scheme" rel="stylesheet" type="text/css" href="https://nekolicio.us/css/custom-dark.css" />
+
+	<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+		<script src="https://nekolicio.us/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper">
+		<div class="header">
+	
+		<div class="avatar">
+			<a href="https://nekolicio.us/">
+				<img src="/images/profile.jpg" alt="nekolicio.us" />
+			</a>
+		</div>
+	
+	<h1 class="site-title"><a href="https://nekolicio.us/">nekolicio.us</a></h1>
+	<div class="site-description"><p>Victor&rsquo;s Writings</p><nav class="nav social">
+			<ul class="flat"><li><a href="https://twitter.com/victorneo" rel="me" title="Twitter"><i data-feather="twitter"></i></a></li><li><a href="https://github.com/victorneo" rel="me" title="Github"><i data-feather="github"></i></a></li><li><a href="/index.xml" rel="me" title="RSS"><i data-feather="rss"></i></a></li></ul>
+		</nav><span class="scheme-toggle"><a href="#" id="scheme-toggle"></a></div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">All Posts</a>
+			</li>
+			
+			<li>
+				<a href="/about">About</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post">
+			<div class="post-header">
+				
+					<div class="meta">
+						<div class="date">
+							<span class="day">07</span>
+							<span class="rest">Jun 2020</span>
+						</div>
+					</div>
+				
+				<div class="matter">
+					<h1 class="title">ASGI Frameworks for Python Are Here</h1>
+				</div>
+			</div>
+					
+			<div class="markdown">
+				<h2 id="asgi-wsgi-and-python">ASGI, WSGI, and Python</h2>
+<p>Most popular Python web frameworks, such as Django and Flask, works with WSGI
+(Web Server Gateway Interface) under the hood, which has been around since
+<a href="https://www.python.org/dev/peps/pep-0333/">PEP 333</a> in 2003, and its update <a href="https://www.python.org/dev/peps/pep-3333/">PEP 3333</a> in 2010.</p>
+<p>With the introduction of asyncio in Python 3 and <code>await</code> syntax in Python 3.5,
+the Python community finally has an easy way to do asynchronous programming. It
+was only a matter of time before steam would pick up for asynchronous support
+for web frameworks in the form of <a href="https://asgi.readthedocs.io/en/latest/specs/main.html">ASGI</a> (Asynchronous Server Gateway
+Interface).</p>
+<p>Major web frameworks are currently working to go async, including <a href="https://docs.djangoproject.com/en/dev/releases/3.1/">Django</a>,
+which is a major effort itself given the size of the framework. <a href="https://flask.palletsprojects.com/en/1.1.x/">Flask</a>,
+which uses <a href="https://github.com/pallets/werkzeug/issues/1322#issuecomment-601062396">Werkzeug</a> internally, does not have ASGI support yet.</p>
+<p>If you are building a new Python-based web project today, the new of ASGI web
+frameworks should be on your list for consideration; they &ldquo;generally&rdquo; perform
+faster than their WSGI-only counterparts for the same workload, and while
+<a href="https://www.techempower.com/benchmarks/#section=data-r19&amp;hw=cl&amp;test=composite&amp;l=zijzen-1r">benchmarks</a> are helpful, it is still best to benchmark it against your own
+use cases.</p>
+<p><img src="/images/asgi/benchmarks.png" alt="TechEmpower Benchmarks Round 19"></p>
+<!-- raw HTML omitted -->
+<h2 id="try-an-asgi-supported-web-framework-today">Try an ASGI-Supported Web Framework Today</h2>
+<p><strong>If you are looking for a Django-like experience</strong> for a full web framework,
+<a href="https://fastapi.tiangolo.com/">FastAPI</a> would offer the closest experience. There is full support for
+<a href="https://fastapi.tiangolo.com/features/#just-modern-python">Pydantic</a>, which makes the experience more pure Python than to learn a new
+framework-specific API.</p>
+<p><img src="/images/asgi/fastapi.png" alt="FastAPI Logo"></p>
+<!-- raw HTML omitted -->
+<p><strong>If you are looking for a Flask-like experience</strong> for a micro-web framework,
+you will be spoiled for options.</p>
+<ul>
+<li><a href="https://pgjones.gitlab.io/quart/index.html">Quart</a> offers full-API compatibility with Flask, and should be the
+first place where you start</li>
+<li><a href="https://vibora.io/">Vibora</a> has an API inspired by Flask with an obsession for speed</li>
+<li><a href="https://sanic.readthedocs.io/en/latest/">Sanic</a> is also inspired by Flask but has different design decisions from
+Vibora</li>
+</ul>
+<pre tabindex="0"><code>from quart import Quart
+
+app = Quart(__name__)
+
+@app.route(&#39;/&#39;)
+async def hello():
+    return &#39;hello&#39;
+
+app.run()
+</code></pre><!-- raw HTML omitted -->
+<p><strong>If you are looking for an ASGI framework/toolkit</strong>, <a href="https://www.starlette.io/">Starlette</a> will be the
+one to go for. It is lower level than the ones listed above as it is ultimately
+a toolkit, but you might find it useful for developing your own frameworks.
+<a href="https://github.com/victorneo/starlette-starter">Starlette-Starter</a> is a boilerplate that I have built for my own API
+projects, which might be helpful for you if you are looking for a starting
+point for your own frameworks.</p>
+<p><img src="/images/asgi/starlette.png" alt="Starlette Logo"></p>
+<!-- raw HTML omitted -->
+<p>If you try any of the frameworks above, I will be happy to hear more about your
+explorations with them on <a href="https://twitter.com/victorneo">Twitter</a>.</p>
+
+			</div>
+
+			<div class="tags">
+				
+					
+				
+			</div></div>
+	</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div>2022  © 2022 Victor Neo. Licensed under CC BY-NC International License. |  <a href="https://github.com/knadh/hugo-ink">Ink</a> theme on <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+<script>feather.replace()</script>
+</body>
+</html>
