@@ -1,7 +1,7 @@
 baseURL = "https://nekolicio.us/"
 languageCode = "en-us"
 title = "nekolicio.us"
-theme = "ink"
+theme = "hugo-ink"
 copyright = "© 2022 Victor Neo. Licensed under CC BY-NC International License."
 summaryLength = 4
 
@@ -17,10 +17,6 @@ summaryLength = 4
 	customCSS = "css/custom.css"
 	customDarkCSS = "css/custom-dark.css"  # Custom styles applied to dark mode css.
 
-[markup]
-  defaultMarkdownHandler = "blackFriday"
-  [markup.blackFriday]
-    hrefTargetBlank = true
 
 [[menu.main]]
 name = "All Posts"
