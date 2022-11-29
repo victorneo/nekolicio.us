@@ -7,10 +7,46 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© 2022 Victor Neo. Licensed under CC BY-NC International License.</copyright>
-    <lastBuildDate>Sun, 07 Jun 2020 01:01:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 30 Nov 2022 01:01:00 +0800</lastBuildDate>
     
 	<atom:link href="https://nekolicio.us/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ActivityPub: Part 2</title>
+      <link>
+              
+                      https://nekolicio.us/posts/30-11-2022-actpub-part-2/
+              
+      </link>
+      <pubDate>Wed, 30 Nov 2022 01:01:00 +0800</pubDate>
+      
+      <guid>https://nekolicio.us/posts/30-11-2022-actpub-part-2/</guid>
+      <description>
+        &lt;h2 id=&#34;2-years-ago&#34;&gt;2 Years Ago&amp;hellip;&lt;/h2&gt;
+&lt;p&gt;I finally got back with a new blog post 2 years since my initial experiments
+with the ActivityPub protocol.&lt;/p&gt;
+&lt;p&gt;Fortunately, the protocol has pretty much remained the same. The good news is
+that since two years ago, there are better and newer resources to kickstart the
+process of building an implementation.&lt;/p&gt;
+&lt;h2 id=&#34;activitypub-tutorial&#34;&gt;ActivityPub Tutorial&lt;/h2&gt;
+&lt;p&gt;One super useful resource that I have found is Timothy&amp;rsquo;s
+&lt;a href=&#34;https://github.com/timmot/activity-pub-tutorial&#34;&gt;activity-pub-tutorial&lt;/a&gt;. It describes the minimal implementation required
+for an ActivityPub implementation to talk to other servers.&lt;/p&gt;
+&lt;p&gt;Notably, it includes a section on Mastodon&amp;rsquo;s new &lt;code&gt;digest&lt;/code&gt; requirement which bit
+me when I was messing around with my own implementation two years ago&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Following this tutorial is probably the best and fastest way to get started.&lt;/p&gt;
+&lt;h2 id=&#34;side-note-on-digest-header&#34;&gt;Side Note on Digest Header&lt;/h2&gt;
+&lt;p&gt;Mastodon requires the &lt;code&gt;digest&lt;/code&gt; header which caught my off-guard two years back.&lt;/p&gt;
+&lt;p&gt;Instead of simply signing this signature text:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;(request-target): post %s\nhost: %s\ndate: %s
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It is now&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;(request-target): post %s\ndigest: SHA-256=%s\nhost: %s\ndate: %s&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Timothy&amp;rsquo;s tutorial includes instructions on how to implement it this new requirement,
+so you can follow it as you go along.&lt;/p&gt;
+
+      </description>
+    </item>
     
     <item>
       <title>ASGI Frameworks for Python Are Here</title>

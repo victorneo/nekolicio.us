@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© 2022 Victor Neo. Licensed under CC BY-NC International License.</copyright>
-    <lastBuildDate>Sun, 07 Jun 2020 01:01:00 +0800</lastBuildDate><atom:link href="https://nekolicio.us/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 30 Nov 2022 01:01:00 +0800</lastBuildDate><atom:link href="https://nekolicio.us/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ActivityPub: Part 2</title>
+      <link>https://nekolicio.us/posts/30-11-2022-actpub-part-2/</link>
+      <pubDate>Wed, 30 Nov 2022 01:01:00 +0800</pubDate>
+      
+      <guid>https://nekolicio.us/posts/30-11-2022-actpub-part-2/</guid>
+      <description>2 Years Ago&amp;hellip; I finally got back with a new blog post 2 years since my initial experiments with the ActivityPub protocol.</description>
+    </item>
+    
     <item>
       <title>ASGI Frameworks for Python Are Here</title>
       <link>https://nekolicio.us/posts/06-06-2020-asgi-frameworks/</link>
